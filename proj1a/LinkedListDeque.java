@@ -1,3 +1,8 @@
+/** @author : Lu
+ * @date 2020/5
+ *     CS61B proj1a create Deque
+ */
+
 public class LinkedListDeque <T> {
 
     /**  TNode private class */
@@ -133,6 +138,7 @@ public class LinkedListDeque <T> {
         return getRecursive(index,Sentinel.next);
     }
 
+    /** test
     public static void main (String args[]){
         LinkedListDeque<Integer> L = new LinkedListDeque<Integer> ();
         L.addFirst(10);
@@ -161,4 +167,5 @@ public class LinkedListDeque <T> {
 
         System.out.println("The item is: "+ L.getRecursive(5)+".");
     }
+     */
 }
