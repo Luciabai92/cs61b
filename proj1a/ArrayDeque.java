@@ -70,11 +70,24 @@ public class ArrayDeque<Item> {
             index = nextLast;
             /* copy the items from last to front*/
             a[index] = (Item) get(size-1-i);//get(i),i is the index in real ascending order.
-            nextLast = index;
+            //nextLast = index;
         }
         items = a;
         nextLast = lastIndex;
         nextFirst = minusOne(index,items);
+    }
+
+    /** down sizes the underlying array to the target capacity. */
+    private void downSize(int capacity){
+        Item[] a = (Item []) new Object[capacity];
+        int index = 0;
+        for(int i=size-1; i>=0; i-=1){
+            /* copy the items from last to front*/
+            a[i] = (Item) get(i);//get(i),i is the index in real ascending order.
+        }
+        items = a;
+        nextLast = size;
+        nextFirst = capacity-1;
     }
 
     /** Inserts X into the back of the list. */
@@ -127,7 +140,7 @@ public class ArrayDeque<Item> {
         nextLast = lastIndex;
         size -= 1;
         while(testUsage()){
-            resize(items.length/2);
+            downSize(items.length/2);
         }
         return x;
     }
@@ -143,7 +156,7 @@ public class ArrayDeque<Item> {
         nextFirst = FirstIndex;
         size -= 1;
         while(testUsage()){
-            resize(items.length/2);
+            downSize(items.length/2);
         }
         return x;
     }
